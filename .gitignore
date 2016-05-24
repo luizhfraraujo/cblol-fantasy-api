@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+nodeapi.sqlite
+nodeapi_test.sqlite
+.DS_Store
+public/apidoc
+logs/*.log
