@@ -11,12 +11,14 @@ module.exports = (sequelize, DataType) => {
       validate: {
         notEmpty: true
       }
-    },
-    done: {
-      type: DataType.BOOLEAN,
-      allowNull: false,
-      defaultValue: false
+  },
+  lane: {
+    type: DataType.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
     }
+  }
   }, {
     classMethods: {
         associate: models => {

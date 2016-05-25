@@ -16,7 +16,6 @@ module.exports = (sequelize, DataType) => {
     classMethods: {
         associate: models => {
           Teams.hasMany(models.Players);
-          Teams.belongsTo(models.Seasons);
         }
     }
   });
