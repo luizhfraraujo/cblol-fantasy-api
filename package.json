@@ -1,7 +1,7 @@
 {
-  "name": "node-api-start-project",
+  "name": "cblol-fantasy-api",
   "version": "1.0.0",
-  "description": "NodeAPI Start Project Template",
+  "description": "CBLoL Fantasy API",
   "main": "index.js",
   "scripts": {
     "start": "npm run apidoc && npm run clusters",
@@ -10,7 +10,7 @@
     "apidoc": "apidoc -i routes -o public/apidoc"
   },
   "apidoc": {
-    "name": "NodeAPI Start Project - Documentação de API",
+    "name": "CBLoL Fantasy Project - Documentação de API",
     "template": {
       "forceLanguage": "pt_br"
     }

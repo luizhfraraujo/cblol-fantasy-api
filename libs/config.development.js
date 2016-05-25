@@ -1,12 +1,12 @@
 import logger from "./logger.js";
 
 module.exports = {
-    database: "nodeapi",
+    database: "cblolfantasy",
     username: "",
     password: "",
     params: {
       dialect: "sqlite",
-      storage: "nodeapi.sqlite",
+      storage: "cblolfantasy.sqlite",
       logging: (sql) => {
           logger.info(`[${new Date()}] ${sql}`);
       }
