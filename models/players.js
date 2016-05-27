@@ -1,23 +1,27 @@
-module.exports = (sequelize, DataType) => {
+module.exports = (sequelize, Sequelize) => {
   const Players = sequelize.define("Players", {
     id: {
-      type: DataType.INTEGER,
+      type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
     nickname: {
-      type: DataType.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true
       }
   },
   lane: {
-    type: DataType.STRING,
-    allowNull: false,
+    type: Sequelize.STRING,
+    allowNull: true,
     validate: {
       notEmpty: true
     }
+},
+  image: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
   }, {
     classMethods: {

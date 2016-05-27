@@ -1,5 +1,6 @@
 module.exports = app => {
   const Teams = app.db.models.Teams;
+  const Players = app.db.models.Players;
   const apiUrl = app.get("apiUrl")
 
   app.route(apiUrl + "/teams")
@@ -25,7 +26,9 @@ module.exports = app => {
         Teams.findOne({
           where: {
             id: req.params.id
-          }
+        }, include: [
+            { model: Players, as: 'Players'}
+        ]
         })
         .then(result => {
           if (result) {

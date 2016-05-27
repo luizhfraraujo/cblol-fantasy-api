@@ -5,6 +5,7 @@ import cors from "cors";
 import compression from "compression";
 import helmet from "helmet";
 import logger from "./logger.js";
+import path from "path";
 
 module.exports = app => {
     //Configura a URL Default da sua API
@@ -12,6 +13,10 @@ module.exports = app => {
 
     //Configura a porta a ser utilizada
     app.set("port", 8000);
+
+    //Configura a url do servidor a ser utilizada
+    app.set("serverUrl", "http://localhost:" + app.get("port"));
+
 
     app.set("json spaces", 4);
     app.use(morgan("common", {
@@ -44,5 +49,6 @@ module.exports = app => {
         delete req.body.id;
         next();
     });
-    app.use(express.static("public"));
+    app.use(express.static(path.join(__dirname,"..", "public")));
+    app.use('/uploads/players', express.static(path.join(__dirname,"..", "public/uploads/players")));
 };
