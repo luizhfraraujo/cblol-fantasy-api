@@ -1,11 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "cblolfantasy",
-    "host": "127.0.0.1",
-    "dialect": "sqlite",
-    "storage": "cblolfantasy.sqlite"
+    "username": "tir4y",
+    "password": "c3v4d4",
+    "database": "cblol_fantasy",
+    "host": "STRAWBERRY.arvixe.com",
+    "dialect": "mysql",
   },
   "test": {
     "username": "root",

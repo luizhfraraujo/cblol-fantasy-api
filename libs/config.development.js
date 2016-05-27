@@ -1,15 +1,15 @@
 import logger from "./logger.js";
 
 module.exports = {
-    database: "cblolfantasy",
-    username: "",
-    password: "",
+    database: "cblol_fantasy",
+    username: "tir4y",
+    password: "c3v4d4",
     params: {
-      dialect: "sqlite",
-      storage: "cblolfantasy.sqlite",
-      logging: (sql) => {
-          logger.info(`[${new Date()}] ${sql}`);
-      }
+        dialect: "mysql",
+             host: "STRAWBERRY.arvixe.com",
+             logging: (sql) => {
+                 logger.info(`[${new Date()}] ${sql}`);
+             }
   },
   jwtSecret: "N0d3-4p1$",
   jwtSession: {session: false}

@@ -1,6 +1,0 @@
-function (err) {
-        newPlayer.image = serverUrl + "/uploads/" + newPlayer.image;
-        if (err) {
-          console.log(err);
-        }
-      }

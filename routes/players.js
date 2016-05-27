@@ -27,35 +27,8 @@ module.exports = app => {
     })
 
     .post((req, res) => {
-        var form = new multiparty.Form();
-        form.parse(req, function(err, fields, files) {
-            console.log(files);
-        });
-
-        var newPlayer = req.body;
-        console.log(req.body, req.files);
-        /*if(newPlayer.image) {
-            fs.readFile(req.files.image.path, function (err, data) {
-                var imageName = req.files.image.name;
-                newPlayer.image = serverUrl + "/uploads/players/" + newPlayer.image;
-                var fsPathImage = path.join(__dirname, '..', 'public/uploads/players/') + newPlayer.image;
-                fs.writeFile(fsPathImage, data, function (err) {
-                    if(err){
-                            console.log(err);
-                    }
-                });
-            });
-        }*/
-
-            /*var fsPathImage = path.join(__dirname, '..', 'public/uploads/players/') + newPlayer.image;
-            newPlayer.image = serverUrl + "/uploads/players/" + newPlayer.image;
-            fs.writeFile(fsPathImage, function (err)
-            {
-                if(err){
-                        console.log(err);
-                }
-            });*/
-        Players.create(newPlayer)
+        req.body.image = "http://localhost:8000/uploads/players/" + req.body.image;
+        Players.create(req.body)
             .then(result => res.json(result))
             .catch(error => {
                 res.status(412).json({msg: error.message});
