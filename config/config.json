@@ -4,7 +4,7 @@
     "password": "c3v4d4",
     "database": "cblol_fantasy",
     "host": "STRAWBERRY.arvixe.com",
-    "dialect": "mysql",
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",

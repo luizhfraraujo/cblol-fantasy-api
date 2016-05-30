@@ -1,17 +1,21 @@
-module.exports = (sequelize, DataType) => {
+module.exports = (sequelize, Sequelize) => {
   const Teams = sequelize.define("Teams", {
     id: {
-      type: DataType.INTEGER,
+      type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
     name: {
-      type: DataType.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true
       }
-    }
+    },
+      image: {
+        type: Sequelize.STRING,
+        allowNull: true
+      }
   }, {
     classMethods: {
         associate: models => {

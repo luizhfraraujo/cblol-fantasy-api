@@ -43,6 +43,7 @@ module.exports = app => {
       })
 
       .put((req, res) => {
+        req.body.image = "http://localhost:8000/uploads/teams/" + req.body.image;
         Teams.update(req.body, {
           where: {
             id: req.params.id
