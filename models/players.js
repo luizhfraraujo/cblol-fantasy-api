@@ -22,7 +22,15 @@ module.exports = (sequelize, Sequelize) => {
   image: {
     type: Sequelize.STRING,
     allowNull: true
-  }
+},
+  points: {
+    type: Sequelize.DECIMAL,
+    allowNull: true
+},
+  price: {
+    type: Sequelize.DECIMAL,
+    allowNull: true
+}
   }, {
     classMethods: {
         associate: models => {

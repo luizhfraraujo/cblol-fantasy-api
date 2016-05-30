@@ -20,6 +20,7 @@ module.exports = (sequelize, Sequelize) => {
     classMethods: {
         associate: models => {
           Teams.hasMany(models.Players);
+          Teams.hasMany(models.MatchTeamStats);
         }
     }
   });

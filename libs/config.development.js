@@ -1,6 +1,20 @@
 import logger from "./logger.js";
 
 module.exports = {
+    /*database: "nodeapi_test",
+    username: "",
+    password: "",
+    params: {
+      dialect: "sqlite",
+      storage: "nodeapi_test.sqlite",
+      logging: false,
+      sync: {
+        force: true
+      },
+      define: {
+        underscored: true
+      }
+  },*/
     database: "cblol_fantasy",
     username: "tir4y",
     password: "c3v4d4",
