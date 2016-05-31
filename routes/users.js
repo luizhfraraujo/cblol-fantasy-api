@@ -1,6 +1,13 @@
+import fs from "fs";
+import path from "path";
+import multipart from "connect-multiparty";
+
 module.exports = app => {
   const Users = app.db.models.Users;
-  const apiUrl = app.get("apiUrl")
+  const apiUrl = app.get("apiUrl");
+  var multipartMiddleware = multipart({
+      uploadDir: path.join(__dirname,"..", "public/uploads/players")
+  });
 
   app.route(apiUrl + "/user")
     .all(app.auth.authenticate())
@@ -25,7 +32,7 @@ module.exports = app => {
      */
     .get((req, res) => {
       Users.findById(req.user.id, {
-        attributes: ["id", "name", "email"]
+        attributes: ["id", "name", "email", "image"]
       })
       .then(result => {
         res.json(result);
@@ -33,6 +40,25 @@ module.exports = app => {
       .catch(error => {
         res.status(412).json({msg: error.message});
       });
+    })
+    .put(multipartMiddleware, (req, res) => {
+        console.log("to no upload");
+        var file = req.files.file;
+        if(file){
+            console.log(file);
+            var pathArray = file.path.split('\\');
+            req.body.image = pathArray[(pathArray.length - 1)];
+        }
+        console.log(req.body);
+        Users.update(req.body, {
+          where: {
+            id: req.params.id
+          }
+        })
+        .then(result => res.sendStatus(204))
+        .catch(error => {
+          res.status(412).json({msg: error.message});
+        });
     })
     /**
      * @api {delete} /user Exclui usuário autenticado
@@ -53,7 +79,7 @@ module.exports = app => {
         .catch(error => {
           res.status(412).json({msg: error.message});
         });
-    })
+    });
 
   /**
    * @api {post} /user Cadastra novo usuário
@@ -86,14 +112,31 @@ module.exports = app => {
    * @apiErrorExample {json} Erro no cadastro
    *    HTTP/1.1 412 Precondition Failed
    */
-   .post((req, res) => {
-        Users.create(req.body)
-            .then(result => {
-                res.json(result);
-            })
-            .catch(error => {
-                res.status(412).json({msg: error.message});
-            });
-       }
-   );
+   app.post(apiUrl + "/users", (req, res) => {
+    Users.create(req.body)
+      .then(result => {
+        res.json(result);
+      })
+      .catch(error => {
+        res.status(412).json({msg: error.message});
+      });
+  });
+  /*app.post(apiUrl + "/users/upload", multipartMiddleware, (req, res) => {
+
+
+      Users.update(req.body, {
+        where: {
+          id: req.params.id
+        }
+    })
+    .then(result => res.sendStatus(204))
+    .catch(error => {
+      res.status(412).json({msg: error.message});
+    });
+
+      var file = req.files.file;
+
+      console.log(pathArray);
+ });*/
+
 };
