@@ -12,7 +12,7 @@ module.exports = app => {
     app.set("apiUrl", "/api/v1")
 
     //Configura a porta a ser utilizada
-    app.set("port", 8000);
+    app.set("port", 8080);
 
     //Configura a url do servidor a ser utilizada
     app.set("serverUrl", "http://localhost:" + app.get("port"));
