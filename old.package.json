@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run clusters",
-    "clusters": "./node_modules/.bin/babel-node index.js",
+    "clusters": "./node_modules/.bin/babel-node clusters.js",
     "test": "NODE_ENV=test mocha test/**/*.js",
     "apidoc": "apidoc -i routes -o public/apidoc"
   },
