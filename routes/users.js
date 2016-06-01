@@ -42,7 +42,6 @@ module.exports = app => {
       });
     })
     .put(multipartMiddleware, (req, res) => {
-        console.log("to no upload");
         var file = req.files.file;
         if(file){
             console.log(file);
@@ -50,9 +49,10 @@ module.exports = app => {
             req.body.image = pathArray[(pathArray.length - 1)];
         }
         console.log(req.body);
+        console.log("Meu ID:" + req.body.id);
         Users.update(req.body, {
           where: {
-            id: req.params.id
+            id: req.body.id
           }
         })
         .then(result => res.sendStatus(204))

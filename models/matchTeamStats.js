@@ -5,16 +5,27 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
-    creeps: {
-      type: Sequelize.INTEGER,
+    gold: {
+      type: Sequelize.DECIMAL,
       allowNull: false,
       validate: {
         notEmpty: true
       }
   },
+  wards: {
+    type: Sequelize.DECIMAL,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+},
   first_blood: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
+},
+first_tower: {
+  type: Sequelize.BOOLEAN,
+  allowNull: false,
 },
   kills: {
     type: Sequelize.INTEGER,
@@ -23,14 +34,21 @@ module.exports = (sequelize, Sequelize) => {
       notEmpty: true
     }
 },
-deaths: {
+towers: {
   type: Sequelize.INTEGER,
   allowNull: false,
   validate: {
     notEmpty: true
   }
 },
-assists: {
+dragons: {
+  type: Sequelize.INTEGER,
+  allowNull: false,
+  validate: {
+    notEmpty: true
+  }
+},
+barons: {
   type: Sequelize.INTEGER,
   allowNull: false,
   validate: {
