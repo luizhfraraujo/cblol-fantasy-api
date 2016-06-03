@@ -35,6 +35,7 @@ module.exports = (sequelize, Sequelize) => {
     classMethods: {
         associate: models => {
           Players.belongsTo(models.Teams);
+          Players.belongsTo(models.MatchTeamStats);
         }
     }
   });

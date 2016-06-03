@@ -1,0 +1,57 @@
+Nome tabela: Players
+Campos:
+    id
+    nickname
+    lane
+    image
+    points
+    price
+
+Associação: Player - time
+---------------------
+Nome tabela: MatchPlayerStats    
+    id
+    creeps
+    kills
+    deaths
+    assists
+
+Associação: 
+MatchPlayerStats.belongsTo(models.Players);
+MatchPlayerStats.belongsTo(models.Matchs);
+---------------------
+Nome tabela: Matchs
+id
+team1
+team2
+date
+time
+type
+
+Associações:
+Matchs.hasMany(models.MatchTeamStats);
+Matchs.hasMany(models.MatchPlayerStats);
+---------------------
+Nome tabela: MatchTeamStats
+    id
+    gold
+    wards
+    first_blood
+    first_tower
+    kills
+    towers
+    dragons
+    barons
+
+Associações:
+MatchTeamStats.belongsTo(models.Teams);
+MatchTeamStats.belongsTo(models.Matchs);
+---------------------
+Nome da Tabela: Teams
+  id
+  name
+  image
+
+Associações: 
+Teams.hasMany(models.Players);
+Teams.hasMany(models.MatchTeamStats);

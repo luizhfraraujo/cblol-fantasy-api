@@ -55,11 +55,20 @@ barons: {
     notEmpty: true
   }
 }
+,
+match_number: {
+  type: Sequelize.INTEGER,
+  allowNull: false,
+  validate: {
+    notEmpty: true
+  }
+}
   }, {
     classMethods: {
         associate: models => {
           MatchTeamStats.belongsTo(models.Teams);
           MatchTeamStats.belongsTo(models.Matchs);
+          MatchTeamStats.HasMany(models.Players);
         }
     }
   });
